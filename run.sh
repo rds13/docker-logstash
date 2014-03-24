@@ -71,4 +71,5 @@ EOF
 fi
 
 #java -jar /opt/logstash.jar agent -f /opt/logstash.conf -- web --backend elasticsearch://$ES_HOST:$ES_PORT/
-java -jar /opt/logstash.jar agent -f /opt/logstash.conf
+#java -jar /opt/logstash.jar agent -f /opt/logstash.conf
+/opt/logstash/bin/logstash -f /opt/logstash.conf
