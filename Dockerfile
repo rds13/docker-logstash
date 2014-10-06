@@ -3,7 +3,7 @@ MAINTAINER Arcus "http://arcus.io"
 RUN echo "deb http://archive.ubuntu.com/ubuntu quantal main universe multiverse" > /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install -y wget openjdk-6-jre
-RUN (cd /opt && wget -nv --no-check-certificate https://download.elasticsearch.org/logstash/logstash/logstash-1.4.0.tar.gz -O /opt/logstash.tar.gz && tar zxf logstash.tar.gz && ln -s logstash-* logstash)
+RUN (cd /opt && wget -nv --no-check-certificate https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz -O /opt/logstash.tar.gz && tar zxf logstash.tar.gz && ln -s logstash-* logstash)
 ADD run.sh /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 RUN rm -rf /tmp/*
