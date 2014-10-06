@@ -1,13 +1,14 @@
-FROM base
+FROM ubuntu:trusty
 MAINTAINER Arcus "http://arcus.io"
-RUN echo "deb http://archive.ubuntu.com/ubuntu quantal main universe multiverse" > /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y wget openjdk-6-jre
-RUN (cd /opt && wget -nv --no-check-certificate https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz -O /opt/logstash.tar.gz && tar zxf logstash.tar.gz && ln -s logstash-* logstash)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget openjdk-7-jre-headless
+RUN cd /opt && wget -nv https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz -O logstash.tar.gz \
+  && tar zxf logstash.tar.gz \
+  && ln -s logstash-* logstash \
+  && rm logstash.tar.gz
 ADD haproxy /opt/logstash/patterns/haproxy
 ADD run.sh /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
-RUN rm -rf /tmp/*
 
 EXPOSE 514
 EXPOSE 9200
